@@ -10,4 +10,4 @@ Each problem has a differnet file that can be associated through the titles of t
 
 
 ## Reason to make this
-While going through this amazing course, I realised that translating from JavaScript to Java isn't as easy as it seems. I wasted a lot of my time initially in rectifying errors I made during translations, didn't want others to do the same. So, good luck! And happy learning!
+While going through this amazing course, I realised that translating from JavaScript to Java isn't as easy as it seems. I wasted a lot of my time initially in rectifying errors I made during these translations, and didn't want others to do the same. So, good luck and happy learning everyone!
