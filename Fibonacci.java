@@ -13,12 +13,31 @@ public class Fibonacci {
         return memo.get(n);
     }
     
+    public static long fibTab(long n){
+        long[] tab=new long[(int)n+1];
+        tab[1]=1;
+        
+        for(int i=0;i<=n;i++){
+            if(i+2<n+1) tab[i+2]+=tab[i];
+            if(i+1<n+1) tab[i+1]+=tab[i];
+        }
+        
+        return tab[(int)n];
+    }
+    
     
     public static void main(String[] arg){
         Scanner s = new Scanner(System.in);
         long n = s.nextLong();
+        
+        //---Recursion---
         //System.out.println(fibRec(n));
-        HashMap<Long, Long> memo= new HashMap<>();
-        System.out.println(fibMemo(n,memo));
+
+        //---Memoisation---
+        //HashMap<Long, Long> memo= new HashMap<>();
+        //System.out.println(fibMemo(n,memo));
+
+        //---Tabulation---
+        System.out.println(fibTab(n));
     }
 }

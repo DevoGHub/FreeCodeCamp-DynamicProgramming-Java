@@ -17,12 +17,34 @@ public class GridTravel {
         return memo.get(key);
     }
     
+    public static long countWaysTab(long m, long n){
+        long[][] tab = new long[(int)m+1][(int)n+1];
+        
+        tab[1][1]=1;
+        
+        for(int i=1;i<=m;i++){
+            for(int j=1;j<=n;j++){
+                if(i+1<=m) tab[i+1][j]+=tab[i][j];
+                if(j+1<=n) tab[i][j+1]+=tab[i][j];
+            }
+        }
+        
+        return tab[(int)m][(int)n];
+    }
+    
     public static void main(String[] args){
         Scanner s = new Scanner(System.in);
         long m = s.nextLong();
         long n = s.nextLong();
+        
+        //---Recursion---
         //System.out.println(countWaysRec(m,n));
-        HashMap<String, Long> memo = new HashMap<>();
-        System.out.println(countWaysMemo(m,n,memo));
+        
+        //---Memoisation---
+        //HashMap<String, Long> memo = new HashMap<>();
+        //System.out.println(countWaysMemo(m,n,memo));
+        
+        //---Tabulation---
+        System.out.println(countWaysTab(m,n));
     }
 }
