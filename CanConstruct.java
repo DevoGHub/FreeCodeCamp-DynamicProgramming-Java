@@ -21,7 +21,7 @@ public class CanConstruct {
         
         for(String s:arr){
             if(str.startsWith(s)){
-                if(canConstructMemo(str.replace(s, ""),arr,memo)){
+                if(canConstructMemo(str.substring(s.length()),arr,memo)){
                     memo.put(str,true);
                     return true;
                 }                
