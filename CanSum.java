@@ -30,6 +30,22 @@ public class CanSum {
         return false;
     }
     
+    public static boolean canSumTab(long target,long[] num){
+        boolean[] tab = new boolean[(int)target+1];
+        Arrays.fill(tab,false);
+        tab[0]=true;
+        
+        for(int i=0;i<=target;i++){
+            if(tab[i]){
+                for(int j=0;j<num.length;j++){
+                    if((i+num[j])<=target) tab[i+(int)num[j]]=true;
+                }
+            }
+        }
+        
+        return tab[(int)target];
+    }
+    
     public static void main(String[] args){
         Scanner s = new Scanner(System.in);
         long target = s.nextLong();
@@ -37,8 +53,13 @@ public class CanSum {
         long[] num = new long[n];
         for(int i=0;i<n;i++) num[i]=s.nextInt();
         
+        //---Recursion---
         //System.out.println(canSumRec(target,num));
-        HashMap<Long,Boolean> memo = new HashMap<>();
-        System.out.println(canSumMemo(target,num,memo));
+        
+        //---Memoisation---
+        //System.out.println(canSumMemo(target,num,new HashMap<>()));
+        
+        //---Tabulation---
+        System.out.println(canSumTab(target,num));
     }
 }

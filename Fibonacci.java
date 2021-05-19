@@ -34,8 +34,7 @@ public class Fibonacci {
         //System.out.println(fibRec(n));
 
         //---Memoisation---
-        //HashMap<Long, Long> memo= new HashMap<>();
-        //System.out.println(fibMemo(n,memo));
+        //System.out.println(fibMemo(n,new HashMap<>()));
 
         //---Tabulation---
         System.out.println(fibTab(n));

@@ -60,6 +60,33 @@ iteration if a new List is not formed */
         return shortest;
     }
     
+    public static ArrayList<Long> bestSumTab(long target, long[] num){
+        ArrayList<Long>[] tab = new ArrayList[(int)target+1];
+        Arrays.fill(tab, null);
+        tab[0] = new ArrayList<>();
+        
+        for(int i=0;i<=target;i++){
+            if(tab[i]!=null){
+                for(long number:num){
+                    if(i+number<=target){
+                        if(tab[i+(int)number]!=null){
+                            if(tab[i+(int)number].size()>=tab[i].size()+1){
+                                tab[i+(int)number] = new ArrayList<>(tab[i]);
+                                tab[i+(int)number].add(number);
+                            }
+                        }
+                        else{
+                            tab[i+(int)number] = new ArrayList<>(tab[i]);
+                            tab[i+(int)number].add(number);
+                        }
+                    }
+                }
+            }
+        }
+        
+        return tab[(int)target];
+    }
+    
     public static void main(String[] args){
         Scanner s = new Scanner(System.in);
         long target = s.nextLong();
@@ -67,8 +94,13 @@ iteration if a new List is not formed */
         long[] num = new long[n];
         for(int i =0;i<n;i++) num[i]=s.nextLong();
         
+        //---Recusrion---
         //System.out.println(bestSumRec(target,num));
-        HashMap<Long,ArrayList<Long>> memo = new HashMap<>();
-        System.out.println(bestSumMemo(target,num,memo));
+        
+        //---Memoisation---
+        //System.out.println(bestSumMemo(target,num,new HashMap<>()));
+        
+        //---Tabulation---
+        System.out.println(bestSumTab(target,num));
     }
 }
