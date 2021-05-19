@@ -3,7 +3,7 @@ Solutions for the the FreeCodeCamp.org course on Dynamic Programming in Java.<br
 Link to the course is [this](https://youtu.be/oBt53YbR9Kk).
 
 ## General Structure
-Each problem has a differnet file that can be associated through the titles of the files. Every file should have three functions:
+Each problem has a different file that can be associated through the titles of the files. Every file should have three functions:
 * Rec: General brute force based recursive function
 * Memo: Memoisation based function
 * Tab: Tabulation based function
