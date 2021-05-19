@@ -49,6 +49,33 @@ public class AllConstruct {
         return store;
     }
     
+    public static ArrayList<ArrayList<String>> allConstructTab(String str, String[] arr){
+        ArrayList<ArrayList<String>>[] tab = new ArrayList[str.length()+1];
+        for(int i=0;i<=str.length();i++){
+            tab[i]=new ArrayList<>();
+        }
+        tab[0]=new ArrayList<>();
+        tab[0].add(new ArrayList<>());
+        
+        for(int i=0;i<=str.length();i++){
+            if(!tab[i].isEmpty()){
+                for(String sub:arr){
+                    if(i+sub.length()<=str.length()){
+                        if(str.substring(i,i+sub.length()).equals(sub)){
+                            for(ArrayList temp:tab[i]){
+                                temp= new ArrayList<>(temp);
+                                temp.add(sub);
+                                tab[i+sub.length()].add(temp);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        return tab[str.length()];
+    }
+    
     public static void main(String[] args){
         Scanner s=new Scanner(System.in);
         String str= s.next();
@@ -56,8 +83,13 @@ public class AllConstruct {
         String[] arr= new String[n];
         for(int i=0;i<n;i++) arr[i]=s.next();
         
+        //---Recursion---
         //System.out.println(allConstructRec(str,arr));
-        HashMap<String,ArrayList<ArrayList<String>>> memo= new HashMap<>();
-        System.out.println(allConstructMemo(str,arr,memo));
+        
+        //---Memoisation---
+        //System.out.println(allConstructMemo(str,arr,new HashMap<>()));
+        
+        //---Tabulation---
+        System.out.println(allConstructTab(str,arr));
     }
 }

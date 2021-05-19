@@ -28,6 +28,26 @@ public class CountConstruct {
         return count;
     }
     
+    public static long countConstructTab(String str, String[] arr){
+        long[] tab = new long[(int)str.length()+1];
+        Arrays.fill(tab, 0);
+        tab[0]=1;
+        
+        for(int i=0;i<=str.length();i++){
+            if(tab[i]!=0){
+                for(String sub:arr){
+                    if(i+sub.length()<=str.length()){
+                        if(str.substring(i,i+sub.length()).equals(sub)){
+                            tab[i+sub.length()]+=tab[i];
+                        }
+                    }
+                }
+            }
+        }
+        
+        return tab[str.length()];
+    }
+    
     public static void main(String[] args){
         Scanner s = new Scanner(System.in);
         String str = s.next();
@@ -35,8 +55,13 @@ public class CountConstruct {
         String[] arr = new String[n];
         for(int i=0;i<n;i++) arr[i]=s.next();
         
+        //---Recursion---
         //System.out.println(countConstructRec(str,arr));
-        HashMap<String, Long> memo=new HashMap<>();
-        System.out.println(countConstructMemo(str,arr,memo));
+        
+        //---Memoisation---
+        //System.out.println(countConstructMemo(str,arr,new HashMap<>()));
+        
+        //---Tabulation---
+        System.out.println(countConstructTab(str,arr));
     }
 }
