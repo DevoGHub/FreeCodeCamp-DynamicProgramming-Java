@@ -1,5 +1,5 @@
 # FreeCodeCamp-DynamicProgramming-Java
-Solutions for the the FreeCodeCamp.org course on Dynamic Programming in Java.<br/>
+Solutions for the the FreeCodeCamp.org (FCC) course on Dynamic Programming (DP) in Java.<br/>
 Link to the course is [this](https://youtu.be/oBt53YbR9Kk).
 
 ## General Structure
